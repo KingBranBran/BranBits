@@ -1,8 +1,8 @@
-package me.branbran;
+package me.branbran.branbits;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.branbran.branbits.GUIListener;
+import me.branbran.branbits.listeners.GUIListener;
 
 public class BranBits extends JavaPlugin {    
     @Override
