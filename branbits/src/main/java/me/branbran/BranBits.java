@@ -1,4 +1,4 @@
-package me.branbran.branbits;
+package me.branbran;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

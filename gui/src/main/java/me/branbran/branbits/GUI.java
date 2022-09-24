@@ -1,5 +1,7 @@
 package me.branbran.branbits;
 
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -10,7 +12,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GUI {
-    private static JavaPlugin plugin;
+
+    private JavaPlugin plugin;
+
+    public static HashMap<Inventory, GUI> guis;
 
     private Inventory inv;
     private String name;
@@ -35,7 +40,7 @@ public class GUI {
 
     public void init(ItemStack[] items) {
         if (items.length != inv.getSize()) {
-            BranBits.getPlugin(BranBits.class).getLogger().severe("The amount of items " + items.length +" does not mach the amount of items inventory " + inv.getSize());
+            plugin.getLogger().severe("The amount of items " + items.length +" does not mach the amount of items inventory " + inv.getSize());
             return;
         }
             
@@ -59,20 +64,12 @@ public class GUI {
         return name;
     }
 
-    public static GUI createGui(InventoryType type, String name) {
-        GUI gui = new GUI(type, name);
-        GUIListener.guis.put(gui.getInv(), gui);
-        return gui;
+    public JavaPlugin getPlugin() {
+        return plugin;
     }
 
-    public static GUI createGui(int size, String name) {
-        GUI gui = new GUI(size, name);
-        GUIListener.guis.put(gui.getInv(), gui);
-        return gui;
-    }
-
-    public static void addGui(GUI gui) {
-        GUIListener.guis.put(gui.getInv(), gui);
+    public void setPlugin(JavaPlugin plugin) {
+        this.plugin = plugin;
     }
 
     @Override
@@ -110,14 +107,22 @@ public class GUI {
         return false;     
     }
 
-    public static JavaPlugin getPlugin() {
-        return plugin;
+    public static GUI createGui(InventoryType type, String name) {
+        GUI gui = new GUI(type, name);
+        guis.put(gui.getInv(), gui);
+        return gui;
     }
 
-    public static void setPlugin(JavaPlugin p) {
-        plugin = p;
+    public static GUI createGui(int size, String name) {
+        GUI gui = new GUI(size, name);
+        guis.put(gui.getInv(), gui);
+        return gui;
     }
-    
+
+    public static void addGui(GUI gui) {
+        guis.put(gui.getInv(), gui);
+    }
+
     public interface OnInventoryClick {
         public void run(InventoryClickEvent e);
     }
