@@ -1,4 +1,4 @@
-package me.branbran.branbits;
+package me.branbran.gui;
 
 import java.util.HashMap;
 
@@ -20,8 +20,8 @@ public class GUI {
     private Inventory inv;
     private String name;
 
-    OnInventoryClick onClick;
-    OnInventoryDrag onDrag;
+    public OnInventoryClick onClick;
+    public OnInventoryDrag onDrag;
 
     public GUI(int size, String name) {
         inv = Bukkit.createInventory(null, size, name);

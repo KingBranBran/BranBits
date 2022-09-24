@@ -1,4 +1,4 @@
-package me.branbran;
+package me.branbran.branbits;
 
 import java.util.HashMap;
 
@@ -9,13 +9,16 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.branbran.gui.GUI;
+
 public class GUIListener implements Listener {
 
-    public static HashMap<Inventory, GUI> guis;
+    private static HashMap<Inventory, GUI> guis;
     
     public GUIListener(JavaPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        guis = new HashMap<>();
+        GUI.guis = new HashMap<>();
+        guis = GUI.guis;
     }
 
     @EventHandler
