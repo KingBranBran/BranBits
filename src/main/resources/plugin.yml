@@ -1,0 +1,5 @@
+main: me.branbran.branbits.BranBits
+name: BranBits
+version: 0.1
+commands:
+  menu:
