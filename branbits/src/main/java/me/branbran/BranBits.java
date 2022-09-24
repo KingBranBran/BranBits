@@ -2,6 +2,8 @@ package me.branbran;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.branbran.branbits.GUIListener;
+
 public class BranBits extends JavaPlugin {    
     @Override
     public void onEnable() {
